@@ -12,12 +12,12 @@ On April 10, [Microsoft to acquire Deis](https://blogs.microsoft.com/blog/2017/0
 ## Structure of the Contents
 In this Hands on Lab, you can create the DEIS on Kubernetes on Azure Container Service. And you also can learn the basis of the Azure Container Registry and Azure Web App Linux(Preview).
 
-1. [Create Azure Container Registry (Private Docker Registry)](https://github.com/yoshioterada/DEIS-on-k8s-on-ACS/blob/master/CreateAzureContainerRegistry.md "Create Azure Container Registry (Private Docker Registry)")
+1. [Create Azure Container Registry (Private Docker Registry)](https://github.com/yoshioterada/DEIS-k8s-ACS/blob/master/CreateAzureContainerRegistry.md "Create Azure Container Registry (Private Docker Registry)")
 
-2. [Run the Docker Image on Azure Web App Linux](https://github.com/yoshioterada/DEIS-on-k8s-on-ACS/blob/master/RunDockerImageAzureWebAppLinux.md)
+2. [Run the Docker Image on Azure Web App Linux](https://github.com/yoshioterada/DEIS-k8s-ACS/blob/master/RunDockerImageAzureWebAppLinux.md)
 
-3. [Create Kubernetes on Azure Container Services (ACS) ](https://github.com/yoshioterada/DEIS-on-k8s-on-ACS/blob/master/KubernetesOnAzureContainerService.md)
+3. [Create Kubernetes on Azure Container Services (ACS) ](https://github.com/yoshioterada/DEIS-k8s-ACS/blob/master/KubernetesOnAzureContainerService.md)
 
-4. [Install Helm and DEIS Workflow on ACS](https://github.com/yoshioterada/DEIS-on-k8s-on-ACS/blob/master/DEIS-Workflow-Install.md)
+4. [Install Helm and DEIS Workflow on ACS](https://github.com/yoshioterada/DEIS-k8s-ACS/blob/master/DEIS-Workflow-Install.md)
 
-5. [First Step of DEIS Application Deploy Management](https://github.com/yoshioterada/DEIS-on-k8s-on-ACS/blob/master/FirstStepOfDEIS.md)
+5. [First Step of DEIS Application Deploy Management](https://github.com/yoshioterada/DEIS-k8s-ACS/blob/master/FirstStepOfDEIS.md)

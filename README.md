@@ -21,3 +21,5 @@ In this Hands on Lab, you can create the DEIS on Kubernetes on Azure Container S
 4. [Install Helm and DEIS Workflow on ACS](https://github.com/yoshioterada/DEIS-k8s-ACS/blob/master/DEIS-Workflow-Install.md)
 
 5. [First Step of DEIS Application Deploy Management](https://github.com/yoshioterada/DEIS-k8s-ACS/blob/master/FirstStepOfDEIS.md)
+
+6. [GUI Management and Monitoring of DEIS](https://github.com/yoshioterada/DEIS-k8s-ACS/blob/master/GUI-Management-Monitoring.md)

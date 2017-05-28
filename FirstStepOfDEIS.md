@@ -1,6 +1,6 @@
-#First Step of DEIS Application Deploy Management
+# First Step of DEIS Application Deploy Management
 
-##Determine IP Address of DEIS router
+## Determine IP Address of DEIS router
 
 At first, you need to confirm the IP address of the Router.  
 On Azure, Deis Workflow will automatically provision and attach a  Router. The Router is responsible for routing HTTP and HTTPS requests from the public internet to applications that are deployed and managed by Deis Workflow, as well as streaming TCP requests to the Builder.
@@ -42,7 +42,7 @@ Events:
 
 
 
-##Register an Admin User for DEIS
+## Register an Admin User for DEIS
 
 At first, you need to create and register a login account. Deis Workflow will automatically be given administrative privileges for first created users. It means that in this example, "yosshi" is administrator.  
 
@@ -63,7 +63,7 @@ Logged in as yosshi
 Configuration file written to /home/yosshi/.deis/client.json
 ```
 
-##Prepare the deployment of the Application
+## Prepare the deployment of the Application
 
 For Dockerfile and Buildpack based application deploys via git push, Deis Workflow identifies users via SSH keys. SSH keys are pushed to the platform and must be unique to each user. Users may have multiple SSH keys as needed. Please refer to the [Users and SSH Keys](https://deis.com/docs/workflow/users/ssh-keys/)?
 
@@ -140,7 +140,7 @@ yosshi@k8s-master-27AF23F9-0:~$  deis whoami
 You are yosshi at http://deis.000.111.222.333.nip.io
 ```
 
-##Deploy Application from Azure Container Registry
+## Deploy Application from Azure Container Registry
 
 In the DEIS WorkFlow, you can choose three kind of way to deploy the application as follows.
 
@@ -154,7 +154,7 @@ In the DEIS WorkFlow, you can choose three kind of way to deploy the application
 In this Hands on Lab, we will use the "Docker Image" type deployment. Because already you upload two Docker images to Azure Container Registry in the [Create Azure Container Registry (Private Docker Registry)](./CreateAzureContainerRegistry.md) section. If you didn't do it, please do it before following step?  
 
 
-###Deploy mynginx  
+### Deploy mynginx  
 
 You can create the deis application by using **"deis create"** command.  
 
@@ -256,7 +256,7 @@ After deployed the application, you can access to your application with
 For example, you can access to the application like follows.  
 http://mynginx.000.111.222.333.nip.io/
 
-###Deploy HelloWorld Java Application (JAR)
+### Deploy HelloWorld Java Application (JAR)
 
 All the deployment process is same as nginx except fot the PORT number configuration. Any kind of the applcation will be able to deploy the same procedure.
 
@@ -304,7 +304,7 @@ yosshi@k8s-master-27AF23F9-0:~$ deis ps -a helloworld
 helloworld-cmd-3351959756-fnklr up (v4)
 ```
 
-##Scale out the Application
+## Scale out the Application
 
 In order to scale out the Application, you can execute **"deis scale"** command.
 
@@ -343,7 +343,7 @@ For more detail, please refer to the following original explantion?
 
 
 
-##Configure the AutoScale Application
+## Configure the AutoScale Application
 
 Autoscale allows adding a minimum and maximum number of pods on a per process type basis. This is accomplished by specifying a target CPU usage across all available pods.
 
@@ -360,7 +360,7 @@ Max Replicas: 8
 CPU: 75%
 ```
 
-##Configure the HealthCheck of Application
+## Configure the HealthCheck of Application
 
 By default, Workflow only checks that the application starts in their Container. If it is preferred to have Kubernetes respond to application health, a health check may be added by configuring a health check probe for the application.
 
@@ -394,11 +394,11 @@ For more detail, please refere to this [document](https://deis.com/docs/workflow
 
 
 
-##Maintenance Mode of Application
+## Maintenance Mode of Application
 
 Maintenance mode for applications is useful to perform certain migrations or upgrades during which we don't want to serve client requests. Deis Workflow supports maintenance mode for an app during which the access to the app is blocked.
 
-###Confirm Current mode
+### Confirm Current mode
 You can confirm the current maintenance mode as follows.
 
 ```
@@ -409,7 +409,7 @@ Maintenance mode is off.
 **Off** : means accessable.  
 **On**  : means not accessable.  
 
-###Maintenance mode ON
+### Maintenance mode ON
 
 If you set the maintenance mode to on, any user can't access to the service.
 
@@ -423,7 +423,7 @@ yosshi@k8s-master-27AF23F9-0:~$ deis maintenance:info -a helloworld
 Maintenance mode is on.
 ```
 
-###Maintenance mode OFF
+### Maintenance mode OFF
 
 If you set the maintenance mode to off, any user can access to the service.
 
@@ -437,7 +437,7 @@ yosshi@k8s-master-27AF23F9-0:~$ deis maintenance:info -a helloworld
 Maintenance mode is off.
 ```
 
-##Release Management of Application
+## Release Management of Application
 
 Deis Workflow tracks all changes to your application. Each time a build or config change is made to your application a new release is created. These release numbers increase monotonically. You can see a record of changes to your application using **deis releases**.
 
@@ -465,11 +465,11 @@ uuid:     f8a9ea6b-59a4-42e4-973e-67c0792a3762
 ```
 
 
-##Role Back the Application
+## Role Back the Application
 
 Deis Workflow also supports rolling back go previous releases. If  your new version of the application failed somethings, you can  rollback to a previous version.
 
-###Current Application Release Info  
+### Current Application Release Info  
 In this application, there is five version until now.  
 
 ```
@@ -482,7 +482,7 @@ v2	2017-05-27T15:21:33Z	yosshi added PORT
 v1	2017-05-27T15:21:08Z	yosshi created initial release
 ```
 
-###Role Back the Application to v4  
+### Role Back the Application to v4  
 
 In this example, rollback to v4.
   
@@ -504,12 +504,12 @@ v2	2017-05-27T15:21:33Z	yosshi added PORT
 v1	2017-05-27T15:21:08Z	yosshi created initial release
 ```
 
-##Configure the Environment Value for Application
+## Configure the Environment Value for Application
 
 Deis treats backing services as attached resources (like databases, messaging, caches and queues). Attachments are performed using environment variables.  
 Please refer to [IV. Backing Service of 12 Factor App](https://12factor.net/backing-services)
 
-###Current Configuration
+### Current Configuration
 
 If you deployed application from Docker image, already you configured the PORT number like follows.
 
@@ -519,7 +519,7 @@ yosshi@k8s-master-27AF23F9-0:~$ deis config -a helloworld
 PORT      8080
 ```
 
-###Configure the new Environment Value
+### Configure the new Environment Value
 
 In order to configure the Environment Value for the Applicaiton, you can execute **deis config:set** command like follows.
 
@@ -532,7 +532,7 @@ KEY       VALUE
 PORT      8080
 ```
 
-###DB Attach configuration
+### DB Attach configuration
 For example, use deis config to set a DAHOST, DBNAME, JDBCUSER, JDBCPASSWORD that attaches the application to an external MySQL database.  
 
 ```

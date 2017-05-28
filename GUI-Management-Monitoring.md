@@ -149,10 +149,10 @@ NPM_CONFIG_PRODUCTION      false
 ### Build & Run Deis Dash Application
 
 ```
-yosshi@k8s-master-27AF23F9-0:~/deisdash/deisdash$ git push deis The authenticity of host '[deis-builder.40.74.137.24.nip.io]:2222 ([40.74.137.24]:2222)' can't be established.
+yosshi@k8s-master-27AF23F9-0:~/deisdash/deisdash$ git push deis The authenticity of host '[deis-builder.000.111.222.333.nip.io]:2222 ([000.111.222.333]:2222)' can't be established.
 ECDSA key fingerprint is SHA256:G228itP0HklCmU+/qFUAPHmnHUzOpv7njTuGAoo1Vzs.
 Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added '[deis-builder.40.74.137.24.nip.io]:2222,[40.74.137.24]:2222' (ECDSA) to the list of known hosts.
+Warning: Permanently added '[deis-builder.000.111.222.333.nip.io]:2222,[000.111.222.333]:2222' (ECDSA) to the list of known hosts.
 Counting objects: 217, done.
 Delta compression using up to 2 threads.
 Compressing objects: 100% (135/135), done.
@@ -233,7 +233,7 @@ To ssh://git@deis-builder.000.111.222.333.nip.io:2222/dash.git
 
 After installed the dash application, please access to the following URL?
 
-http://dash.40.74.137.24.nip.io
+http://dash.000.111.222.333.nip.io
 
 If you acces to the above URL, you can see following screen. In this screen, please login with the account which created the **deis register** in the previous entry.
 

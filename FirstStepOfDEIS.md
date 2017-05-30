@@ -1,6 +1,6 @@
 # First Step of DEIS Application Deploy Management
 
-## Determine IP Address of DEIS router
+## 1. Determine IP Address of DEIS router
 
 At first, you need to confirm the IP address of the Router.  
 On Azure, Deis Workflow will automatically provision and attach a  Router. The Router is responsible for routing HTTP and HTTPS requests from the public internet to applications that are deployed and managed by Deis Workflow, as well as streaming TCP requests to the Builder.
@@ -42,7 +42,7 @@ Events:
 
 
 
-## Register an Admin User for DEIS
+## 2. Register an Admin User for DEIS
 
 At first, you need to create and register a login account. Deis Workflow will automatically be given administrative privileges for first created users. It means that in this example, "yosshi" is administrator.  
 
@@ -63,7 +63,7 @@ Logged in as yosshi
 Configuration file written to /home/yosshi/.deis/client.json
 ```
 
-## Prepare the deployment of the Application
+## 3. Prepare the deployment of the Application
 
 For Dockerfile and Buildpack based application deploys via git push, Deis Workflow identifies users via SSH keys. SSH keys are pushed to the platform and must be unique to each user. Users may have multiple SSH keys as needed. Please refer to the [Users and SSH Keys](https://deis.com/docs/workflow/users/ssh-keys/)?
 
@@ -140,7 +140,7 @@ yosshi@k8s-master-27AF23F9-0:~$  deis whoami
 You are yosshi at http://deis.000.111.222.333.nip.io
 ```
 
-## Deploy Application from Azure Container Registry
+## 4. Deploy Application from Azure Container Registry
 
 In the DEIS WorkFlow, you can choose three kind of way to deploy the application as follows.
 
@@ -154,7 +154,7 @@ In the DEIS WorkFlow, you can choose three kind of way to deploy the application
 In this Hands on Lab, we will use the "Docker Image" type deployment. Because already you upload two Docker images to Azure Container Registry in the [Create Azure Container Registry (Private Docker Registry)](./CreateAzureContainerRegistry.md) section. If you didn't do it, please do it before following step?  
 
 
-### Deploy mynginx  
+### 4.1 Deploy mynginx  
 
 You can create the deis application by using **"deis create"** command.  
 
@@ -256,7 +256,7 @@ After deployed the application, you can access to your application with
 For example, you can access to the application like follows.  
 http://mynginx.000.111.222.333.nip.io/
 
-### Deploy HelloWorld Java Application (JAR)
+### 4.2 Deploy HelloWorld Java Application (JAR)
 
 All the deployment process is same as nginx except fot the PORT number configuration. Any kind of the applcation will be able to deploy the same procedure.
 
@@ -304,7 +304,7 @@ yosshi@k8s-master-27AF23F9-0:~$ deis ps -a helloworld
 helloworld-cmd-3351959756-fnklr up (v4)
 ```
 
-## Scale out the Application
+## 5. Scale out the Application
 
 In order to scale out the Application, you can execute **"deis scale"** command.
 
@@ -343,7 +343,7 @@ For more detail, please refer to the following original explantion?
 
 
 
-## Configure the AutoScale Application
+## 6. Configure the AutoScale Application
 
 Autoscale allows adding a minimum and maximum number of pods on a per process type basis. This is accomplished by specifying a target CPU usage across all available pods.
 
@@ -360,7 +360,7 @@ Max Replicas: 8
 CPU: 75%
 ```
 
-## Configure the HealthCheck of Application
+## 7. Configure the HealthCheck of Application
 
 By default, Workflow only checks that the application starts in their Container. If it is preferred to have Kubernetes respond to application health, a health check may be added by configuring a health check probe for the application.
 
@@ -394,11 +394,11 @@ For more detail, please refere to this [document](https://deis.com/docs/workflow
 
 
 
-## Maintenance Mode of Application
+## 8. Maintenance Mode of Application
 
 Maintenance mode for applications is useful to perform certain migrations or upgrades during which we don't want to serve client requests. Deis Workflow supports maintenance mode for an app during which the access to the app is blocked.
 
-### Confirm Current mode
+### 8.1 Confirm Current mode
 You can confirm the current maintenance mode as follows.
 
 ```
@@ -409,7 +409,7 @@ Maintenance mode is off.
 **Off** : means accessable.  
 **On**  : means not accessable.  
 
-### Maintenance mode ON
+### 8.2 Maintenance mode ON
 
 If you set the maintenance mode to on, any user can't access to the service.
 
@@ -423,7 +423,7 @@ yosshi@k8s-master-27AF23F9-0:~$ deis maintenance:info -a helloworld
 Maintenance mode is on.
 ```
 
-### Maintenance mode OFF
+### 8.3 Maintenance mode OFF
 
 If you set the maintenance mode to off, any user can access to the service.
 
@@ -437,7 +437,7 @@ yosshi@k8s-master-27AF23F9-0:~$ deis maintenance:info -a helloworld
 Maintenance mode is off.
 ```
 
-## Release Management of Application
+## 9. Release Management of Application
 
 Deis Workflow tracks all changes to your application. Each time a build or config change is made to your application a new release is created. These release numbers increase monotonically. You can see a record of changes to your application using **deis releases**.
 
@@ -465,11 +465,11 @@ uuid:     f8a9ea6b-59a4-42e4-973e-67c0792a3762
 ```
 
 
-## Role Back the Application
+## 10. Role Back the Application
 
 Deis Workflow also supports rolling back go previous releases. If  your new version of the application failed somethings, you can  rollback to a previous version.
 
-### Current Application Release Info  
+### 10.1 Current Application Release Info  
 In this application, there is five version until now.  
 
 ```
@@ -482,7 +482,7 @@ v2	2017-05-27T15:21:33Z	yosshi added PORT
 v1	2017-05-27T15:21:08Z	yosshi created initial release
 ```
 
-### Role Back the Application to v4  
+### 10.2 Role Back the Application to v4  
 
 In this example, rollback to v4.
   
@@ -504,12 +504,12 @@ v2	2017-05-27T15:21:33Z	yosshi added PORT
 v1	2017-05-27T15:21:08Z	yosshi created initial release
 ```
 
-## Configure the Environment Value for Application
+## 11. Configure the Environment Value for Application
 
 Deis treats backing services as attached resources (like databases, messaging, caches and queues). Attachments are performed using environment variables.  
 Please refer to [IV. Backing Service of 12 Factor App](https://12factor.net/backing-services)
 
-### Current Configuration
+### 11.1 Current Configuration
 
 If you deployed application from Docker image, already you configured the PORT number like follows.
 
@@ -519,7 +519,7 @@ yosshi@k8s-master-27AF23F9-0:~$ deis config -a helloworld
 PORT      8080
 ```
 
-### Configure the new Environment Value
+### 11.2 Configure the new Environment Value
 
 In order to configure the Environment Value for the Applicaiton, you can execute **deis config:set** command like follows.
 
@@ -532,7 +532,7 @@ KEY       VALUE
 PORT      8080
 ```
 
-### DB Attach configuration
+### 11.3 DB Attach configuration
 For example, use deis config to set a DAHOST, DBNAME, JDBCUSER, JDBCPASSWORD that attaches the application to an external MySQL database.  
 
 ```
@@ -542,4 +542,219 @@ DB_HOST            looping-angelfish-mysql.default.svc.cluster.local
 DB_NAME            artist
 JDBC_PASSWORD      **********
 JDBC_USER          root
+```
+
+## 12. Restrict the Access (Whitelist) to the services
+
+
+### 12.1 List the current availabel IP address
+
+If you execute the **"deis whitelist:list"** command, you can confirm the current configuration as follows.
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ deis whitelist:list -a helloworld
+=== helloworld Whitelisted Addresses
+```
+
+### 12.2 Add whitelist IP address to the service
+
+If you execute the **"deis whitelist:add"** command, you can add the whitelist IP address.
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ deis whitelist:add 10.0.1.0/24,121.212.121.212 -a helloworld
+Adding 10.0.1.0/24,121.212.121.212 to helloworld whitelist...
+done
+yosshi@k8s-master-27AF23F9-0:~$ deis whitelist:list  -a helloworld
+=== helloworld Whitelisted Addresses
+10.0.1.0/24
+121.212.121.212
+```
+
+### 12.3 Remove whitelist IP address from the service
+
+If you execute the **"deis whitelist:remove"** command, you can remove the whitelist IP address from the service.
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ deis whitelist:remove 121.212.121.212  -a helloworld
+Removing 121.212.121.212 from helloworld whitelist...
+done
+yosshi@k8s-master-27AF23F9-0:~$ deis whitelist:list  -a helloworld
+=== helloworld Whitelisted Addresses
+10.0.1.0/24
+
+```
+
+## 13. Redundant Router instance
+
+As default, deis route(nginx instance) is running on only one node. So if the node failed or down, all of service become unavailable.
+
+### 13.1 Confirm the node which is running the router.
+
+You can confirm the current node by using **"kubectl describe pod"** command.
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ kubectl --namespace=deis describe pod deis-router |grep Node
+Node:		k8s-agent-27af23f9-2/10.240.0.6
+```
+
+### 13.2 Increase the number of node which is running the router.
+
+In production environment, you need to configure the redundant structure for the router instance. In order to increase the number of route, please execute **"kubectl scale"** command? 
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ kubectl --namespace=deis scale --replicas=2 deployment/deis-router
+deployment "deis-router" scaled
+
+yosshi@k8s-master-27AF23F9-0:~$ kubectl --namespace=deis describe pod deis-router |grep Node
+Node:		k8s-agent-27af23f9-2/10.240.0.6
+Node:		k8s-agent-27af23f9-1/10.240.0.4
+```
+
+
+## 14. Segregation the Runtime Environment (Change the runtime node) 
+
+In some situation, you would like to segregate the runtime environment like staging, production. If you use the k8s with deis, you can segregate the runtime environment very easily.
+
+### 14.1 Confirm the number of nodes on ACS
+
+At first, please confirm the number of the nodes on your Azure Container Services as follows?
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ kubectl get nodes
+NAME                    STATUS                     AGE
+k8s-agent-27af23f9-0    Ready                      2d
+k8s-agent-27af23f9-1    Ready                      2d
+k8s-agent-27af23f9-2    Ready                      2d
+k8s-agent-27af23f9-3    Ready                      2d
+k8s-agent-27af23f9-4    Ready                      2d
+k8s-agent-27af23f9-5    NotReady                   28s
+k8s-master-27af23f9-0   Ready,SchedulingDisabled   2d
+```
+
+### 14.2 Confirm which node the service is running
+
+Could you confirm which of the nodes your application is running? 
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ kubectl describe pods --namespace helloworld |grep Node
+Node:		k8s-agent-27af23f9-1/10.240.0.4
+Node:		k8s-agent-27af23f9-2/10.240.0.6
+Node:		k8s-agent-27af23f9-4/10.240.0.7
+```
+
+In this example the applicaiton is running on 3 nodes as   
+
+- "k8s-agent-27af23f9-1"  
+- "k8s-agent-27af23f9-2"  
+- "k8s-agent-27af23f9-4"  
+
+
+### 14.3 Grouping the node to segregate
+
+In order to segregate the runtime environment, please create the group by using **"kubectl label nodes"** command? 
+ 
+In following example, we create two group as node-group1 and node-group2.
+
+**Group : node-group1**
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ kubectl label nodes k8s-agent-27af23f9-0 environment=node-group1
+node "k8s-agent-27af23f9-0" labeled
+yosshi@k8s-master-27AF23F9-0:~$ kubectl label nodes k8s-agent-27af23f9-1 environment=node-group1
+node "k8s-agent-27af23f9-1" labeled
+yosshi@k8s-master-27AF23F9-0:~$ kubectl label nodes k8s-agent-27af23f9-2 environment=node-group1
+node "k8s-agent-27af23f9-2" labeled
+```
+
+- "k8s-agent-27af23f9-0"  
+- "k8s-agent-27af23f9-1"  
+- "k8s-agent-27af23f9-2"  
+
+
+**Group : node-group2**
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ kubectl label nodes k8s-agent-27af23f9-3 environment=node-group2
+node "k8s-agent-27af23f9-3" labeled
+yosshi@k8s-master-27AF23F9-0:~$ kubectl label nodes k8s-agent-27af23f9-4 environment=node-group2
+node "k8s-agent-27af23f9-4" labeled
+yosshi@k8s-master-27AF23F9-0:~$ kubectl label nodes k8s-agent-27af23f9-5 environment=node-group2
+node "k8s-agent-27af23f9-5" labeled
+```
+
+- "k8s-agent-27af23f9-3"  
+- "k8s-agent-27af23f9-4"  
+- "k8s-agent-27af23f9-5"  
+
+
+### 14.4 Move the instances to node-group1
+
+After created the group, you can move the instances to the specific group as follows. Please execute the **"deis tags:set"** command?
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ deis tags:set environment=node-group1 -a helloworld
+Applying tags... done
+
+=== helloworld Tags
+environment     node-group1
+
+yosshi@k8s-master-27AF23F9-0:~$ kubectl describe pods --namespace helloworld |grep Node
+Node:		k8s-agent-27af23f9-0/10.240.0.5
+Node:		k8s-agent-27af23f9-2/10.240.0.6
+Node:		k8s-agent-27af23f9-1/10.240.0.4
+```
+
+Of course, You can also move the instances to "node-group2" as follows.
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ deis tags:set environment=node-group2 -a helloworld
+Applying tags... done
+
+=== helloworld Tags
+environment     node-group2
+
+yosshi@k8s-master-27AF23F9-0:~$ kubectl describe pods --namespace helloworld |grep Node
+Node:		k8s-agent-27af23f9-5/10.240.0.9
+Node:		k8s-agent-27af23f9-3/10.240.0.8
+Node:		k8s-agent-27af23f9-4/10.240.0.7
+```
+
+## 15. Restart specific an process
+
+If you would like to stop the specific process, you can do it by using **"deis ps:restart"** command.
+
+### 15.1 List application processes
+
+At first, please confirm how many process is running for the applicaiton?
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ deis ps:list -a helloworld
+=== helloworld Processes
+--- cmd:
+helloworld-cmd-720068219-gtzw5 up (v9)
+helloworld-cmd-720068219-hlmhr up (v9)
+helloworld-cmd-720068219-xqmrs up (v9)
+```
+
+### 15.2 Restart the appilcation process
+
+For example, if you would like to restart the above process of "helloworld-cmd-720068219-xqmrs", please execute following?
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ deis ps:restart helloworld-cmd-720068219-xqmrs -a helloworld
+Restarting processes... but first, coffee!
+done in 29s
+=== helloworld Processes
+--- cmd:
+helloworld-cmd-720068219-ppch5 up (v9)
+```
+After executed the above, you can confirm the process name had changed like follows.
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ deis ps:list -a helloworld
+=== helloworld Processes
+--- cmd:
+helloworld-cmd-720068219-gtzw5 up (v9)
+helloworld-cmd-720068219-hlmhr up (v9)
+helloworld-cmd-720068219-ppch5 up (v9)
 ```

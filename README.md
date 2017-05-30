@@ -2,10 +2,10 @@
 
 
 ## Why I created this HoL ?
-On April 10, [Microsoft to acquire Deis](https://blogs.microsoft.com/blog/2017/04/10/microsoft-acquire-deis-help-companies-innovate-containers/ "Microsoft to acquire Deis") to help companies innovate with containers. And I explained 12 Factor App to Japanese developers. At that time, I evaluated DEIS on k8s on ACS. So I will share my evaluation prosess as follows.
+On April 10, [Microsoft acquired Deis](https://blogs.microsoft.com/blog/2017/04/10/microsoft-acquire-deis-help-companies-innovate-containers/ "Microsoft to acquire Deis") to help companies innovate with containers, and I explained "12 Factor App" to Japanese developers. At that time, I evaluated DEIS on k8s on ACS. So I will share my evaluation process as follows:
 
 ## List of Hands on Lab Contents
-In this Hands on Lab, you can create Azure Container Registry and Azure Web App Linux(Preview). After that you also cleate DEIS on Kubernetes on Azure Container Service. During this Hands on Lab, you can learn the basis of the Container technologies and also advanced management of the Container by using DEIS on k8s.
+In this Hands on Lab, you can create Azure Container Registry and Azure Web App Linux(Preview). After that you also create DEIS on Kubernetes on Azure Container Service. During this Hands on Lab, you can learn the basis of the Container technologies and also advanced management of the Container by using DEIS on k8s.
 
 1. [Create Azure Container Registry (Private Docker Registry)](https://github.com/yoshioterada/DEIS-k8s-ACS/blob/master/CreateAzureContainerRegistry.md "Create Azure Container Registry (Private Docker Registry)")
 

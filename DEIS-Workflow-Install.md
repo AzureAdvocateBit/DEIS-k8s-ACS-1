@@ -236,7 +236,7 @@ deis-router            1        1        1           0          5s
 ```
 
 
-###3.5 Confirm the status of DEIS from Helm and k8s
+### 3.5 Confirm the status of DEIS from Helm and k8s
 
 You can get the name of DEIS by using **"helm ls"** command. In this example, the name of DEIS is "prodding-olm".
 

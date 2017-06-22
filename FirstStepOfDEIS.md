@@ -758,3 +758,19 @@ helloworld-cmd-720068219-gtzw5 up (v9)
 helloworld-cmd-720068219-hlmhr up (v9)
 helloworld-cmd-720068219-ppch5 up (v9)
 ```
+
+## 15. Customize DEIS Router  
+
+### DEIS Router Default Configuration
+
+[DEIS Router](https://github.com/deis/router "DEIS Router") is created on nginx and it has some default configurations. 
+Please refer to the [this link](https://github.com/deis/router)?
+
+### Change the default value of DEIS Router
+
+For example, in order to upload the file bigger than 1m, you need to change the default value as follows.
+
+```
+yosshi@k8s-master-27AF23F9-0:~$ kubectl --namespace=deis annotate deployment/deis-router router.deis.io/nginx.bodySize="20M" 
+deployment "deis-router" annotated
+```

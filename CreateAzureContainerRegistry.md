@@ -132,7 +132,7 @@ Step 7/7 : EXPOSE 443
  ---> 411376d14702
 Successfully built 411376d14702
 
-local$ docker tag tyoshio2002/mynginx:1.0 yosshi.azurecr.io/  tyoshio2002/mynginx:1.0  
+local$ docker tag tyoshio2002/mynginx:1.0 yosshi.azurecr.io/tyoshio2002/mynginx:1.0  
 
 local$ docker push yosshi.azurecr.io/tyoshio2002/mynginx  
 The push refers to a repository [yosshi.azurecr.io/tyoshio2002/mynginx]

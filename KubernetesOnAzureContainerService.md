@@ -235,6 +235,7 @@ In this example, the DNS of the master node was "yosshi-k8smgmt.japanwest.clouda
 ## Login to the master node of ACS
 
 After you created the ACS, you can login to the master node of ACS with your SSH private key. Please execute the following command and login to the system?
+Note: For the command argument -i, please specify your private key file which you created at the section of **Create SSH Keys for login**
 
 ```
 $ ssh yosshi@yosshi-k8smgmt.japanwest.cloudapp.azure.com -A -i ~/.ssh/yosshi-k8s-acs
